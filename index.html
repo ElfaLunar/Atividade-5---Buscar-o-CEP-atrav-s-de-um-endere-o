@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busca CEP por Endereço</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Busca CEP por Endereço</h1>
+        <p class="subtitle">Digite o endereço completo para encontrar o CEP correspondente</p>
+
+        <form id="cepForm">
+            <div class="form-group">
+                <label for="logradouro">Logradouro (Rua/Avenida):</label>
+                <input type="text" id="logradouro" placeholder="Ex: Avenida Paulista" required>
+            </div>
+
+            <div class="form-group">
+                <label for="bairro">Bairro (opcional):</label>
+                <input type="text" id="bairro" placeholder="Ex: Bela Vista">
+            </div>
+
+            <div class="form-group">
+                <label for="cidade">Cidade:</label>
+                <input type="text" id="cidade" placeholder="Ex: São Paulo" required>
+            </div>
+
+            <div class="estado-cidade">
+                <div class="form-group">
+                    <label for="estado">Estado (UF):</label>
+                    <select id="estado" required>
+                        <option value="">Selecione</option>
+                        <option value="AC">Acre (AC)</option>
+                        <option value="AL">Alagoas (AL)</option>
+                        <option value="AP">Amapá (AP)</option>
+                        <option value="AM">Amazonas (AM)</option>
+                        <option value="BA">Bahia (BA)</option>
+                        <option value="CE">Ceará (CE)</option>
+                        <option value="DF">Distrito Federal (DF)</option>
+                        <option value="ES">Espírito Santo (ES)</option>
+                        <option value="GO">Goiás (GO)</option>
+                        <option value="MA">Maranhão (MA)</option>
+                        <option value="MT">Mato Grosso (MT)</option>
+                        <option value="MS">Mato Grosso do Sul (MS)</option>
+                        <option value="MG">Minas Gerais (MG)</option>
+                        <option value="PA">Pará (PA)</option>
+                        <option value="PB">Paraíba (PB)</option>
+                        <option value="PR">Paraná (PR)</option>
+                        <option value="PE">Pernambuco (PE)</option>
+                        <option value="PI">Piauí (PI)</option>
+                        <option value="RJ">Rio de Janeiro (RJ)</option>
+                        <option value="RN">Rio Grande do Norte (RN)</option>
+                        <option value="RS">Rio Grande do Sul (RS)</option>
+                        <option value="RO">Rondônia (RO)</option>
+                        <option value="RR">Roraima (RR)</option>
+                        <option value="SC">Santa Catarina (SC)</option>
+                        <option value="SP">São Paulo (SP)</option>
+                        <option value="SE">Sergipe (SE)</option>
+                        <option value="TO">Tocantins (TO)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="numero">Número:</label>
+                    <input type="text" id="numero" placeholder="Ex: 123" required>
+                </div>
+            </div>
+
+            <button type="submit">Buscar CEP</button>
+        </form>
+
+        <div class="carregando" id="carregando">
+            <div class="spinner"></div>
+            <p>Buscando CEP...</p>
+        </div>
+
+        <div class="erro" id="erro"></div>
+
+        <div class="resultado" id="resultado">
+            <h2>✅ CEP Encontrado!</h2>
+            <div class="cep-encontrado" id="cepValor"></div>
+            <div class="info-item">
+                <strong>Logradouro:</strong> <span id="resLogradouro"></span>
+            </div>
+            <div class="info-item">
+                <strong>Bairro:</strong> <span id="resBairro"></span>
+            </div>
+            <div class="info-item">
+                <strong>Cidade/UF:</strong> <span id="resCidade"></span>
+            </div>
+            <div class="info-item">
+                <strong>Número:</strong> <span id="resNumero"></span>
+            </div>
+        </div>
+
+        <div class="dicas">
+            <h3>📝 Dicas e Endereços para Teste:</h3>
+            <ul>
+                <li class="endereco-exemplo" onclick="preencherExemplo('Avenida Paulista', 'Bela Vista', 'São Paulo', 'SP', '1000')">
+                    Avenida Paulista, 1000 - Bela Vista, São Paulo/SP
+                </li>
+                <li class="endereco-exemplo" onclick="preencherExemplo('Rua Oscar Freire', 'Cerqueira César', 'São Paulo', 'SP', '500')">
+                    Rua Oscar Freire, 500 - Cerqueira César, São Paulo/SP
+                </li>
+                <li class="endereco-exemplo" onclick="preencherExemplo('Avenida Rio Branco', 'Centro', 'Rio de Janeiro', 'RJ', '150')">
+                    Avenida Rio Branco, 150 - Centro, Rio de Janeiro/RJ
+                </li>
+            </ul>
+            <p style="margin-top: 10px; color: #666; font-size: 12px;">
+                ⚠️ Nota: Alguns endereços podem não retornar CEP exato. A busca é baseada em dados públicos.
+            </p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
